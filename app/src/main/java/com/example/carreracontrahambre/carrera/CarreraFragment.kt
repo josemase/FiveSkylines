@@ -33,6 +33,7 @@ class CarreraFragment : Fragment(), SensorEventListener {
     private var pasostotalesAnter= 0f
     private val metrosPorVuelta=300.0
     private var metrosActuales=0
+    private var altura= 0
   val viewModel: CarreraViewModel by activityViewModels()
     private var vueltas=0
 
@@ -65,7 +66,7 @@ class CarreraFragment : Fragment(), SensorEventListener {
 
         btn_iniciar.setOnClickListener {
             corriendo=true
-
+            altura = alturaCanti.text.toString().toInt()
         }
 
         btn_pausar.setOnClickListener {
@@ -110,7 +111,7 @@ class CarreraFragment : Fragment(), SensorEventListener {
             }
         }
     }
-    fun calcularMetros(pasosActuales: Int): Double=pasosActuales*0.67056
+    fun calcularMetros(pasosActuales: Int): Double=pasosActuales*0.414*altura
 
     override fun onAccuracyChanged(sensor: Sensor?, accuracy: Int) {
 
