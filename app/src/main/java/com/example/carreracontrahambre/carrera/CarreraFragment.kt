@@ -6,6 +6,7 @@ import android.hardware.SensorEvent
 import android.hardware.SensorEventListener
 import android.hardware.SensorManager
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -14,6 +15,10 @@ import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.core.content.ContextCompat.getSystemService
 import androidx.core.content.getSystemService
+import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.ViewModelProviders
 import com.example.carreracontrahambre.R
 import kotlinx.android.synthetic.main.fragment_carrera.*
 
@@ -21,8 +26,14 @@ class CarreraFragment : Fragment(), SensorEventListener {
 
     private lateinit var sensorManager: SensorManager
     private var corriendo= false
+    private var pasosIni=0
     private var pasosTotales= 0f
     private var pasostotalesAnter= 0f
+    private val metrosPorVuelta=300.0
+    private var metrosActuales=0
+  val viewModel: CarreraViewModel by activityViewModels()
+    private var vueltas=0
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         sensorManager = context?.getSystemService(Context.SENSOR_SERVICE) as SensorManager
@@ -30,14 +41,11 @@ class CarreraFragment : Fragment(), SensorEventListener {
 
     override fun onResume() {
         super.onResume()
-        corriendo=true
         val stepSensor: Sensor? = sensorManager.getDefaultSensor(Sensor.TYPE_STEP_COUNTER)
 
         if(stepSensor==null){
-
             Toast.makeText(context, "No hay sensor de pasos",Toast.LENGTH_LONG).show()
         }else{
-
             sensorManager?.registerListener(this, stepSensor,SensorManager.SENSOR_DELAY_UI)
 
         }
@@ -53,17 +61,41 @@ class CarreraFragment : Fragment(), SensorEventListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        btn_iniciar.setOnClickListener {
+            corriendo=true
 
+        }
+
+        btn_pausar.setOnClickListener {
+            corriendo=false
+        }
     }
 
     override fun onSensorChanged(event: SensorEvent?) {
         if(corriendo){
-
-            pasosTotales=event!!.values[0]
-            val pasoActuales= pasosTotales.toInt()-pasostotalesAnter.toInt()
-            vueltasCanti.text= ("$pasoActuales")
+            if(pasosIni==0){
+                pasosIni= event!!.values[0].toInt()
+            }
+            pasosTotales= event!!.values[0]-pasosIni
+            val pasosActuales= pasosTotales.toInt()-pasostotalesAnter.toInt()
+            Log.e("pasosActuales",pasosActuales.toString() )
+            //metrosActuales= calcularMetros(pasosActuales).toInt()
+            metrosActuales=250+pasosActuales
+            Log.e("metros",metrosActuales.toString() )
+            val porcentajeDeVuelta= (metrosActuales*100.0)/metrosPorVuelta
+            Log.e("porcentajeVuelta",porcentajeDeVuelta.toString() )
+            progresoVuelta.progress=porcentajeDeVuelta.toInt()
+            if(metrosActuales.toDouble() >= metrosPorVuelta && metrosActuales.toDouble() <= metrosPorVuelta+5){
+                vueltas++
+                vueltasCanti.text=vueltas.toString()
+                viewModel.setMetrosReco(metrosActuales)
+                metrosActuales=0
+                progresoVuelta.progress=0
+              viewModel.setVueltas(vueltas)
+            }
         }
     }
+    fun calcularMetros(pasosActuales: Int): Double=pasosActuales*0.67056
 
     override fun onAccuracyChanged(sensor: Sensor?, accuracy: Int) {
 

@@ -17,8 +17,10 @@ class MainActivity : AppCompatActivity() {
         FirebaseApp.initializeApp(this);
         auth = Firebase.auth
         supportFragmentManager.beginTransaction()
-            .replace(R.id.fragmentContainer, LoginFragment())
+            .replace(R.id.fragmentContainer, HomeFragment())
             .commit()
+
+        
     }
 
 }
