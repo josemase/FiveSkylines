@@ -27,7 +27,7 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        btn_iniciar.setOnClickListener {
+        btn_iniciar_sesion.setOnClickListener {
             requireActivity().supportFragmentManager.beginTransaction()
                 .replace(R.id.fragmentContainer, LoginFragment())
                 .addToBackStack("toInicioSesion")
