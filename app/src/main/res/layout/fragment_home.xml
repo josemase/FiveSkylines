@@ -29,7 +29,7 @@
         app:layout_constraintTop_toBottomOf="@+id/txt_main" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/btn_registar"
         android:layout_width="@dimen/btn_width"
         android:layout_height="@dimen/btn_height"
         android:layout_marginTop="@dimen/medium2_margin"
@@ -41,6 +41,7 @@
         app:layout_constraintTop_toBottomOf="@+id/imageView"/>
 
     <Button
+        android:id="@+id/btn_iniciar"
         android:layout_width="@dimen/btn_width"
         android:layout_height="@dimen/btn_height"
         android:text="Inicia sesión"
@@ -48,7 +49,7 @@
         android:background="@drawable/btn_default"
         android:backgroundTint="@color/colorOrange"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button"
+        app:layout_constraintTop_toBottomOf="@+id/btn_registar"
         android:layout_marginTop="@dimen/medium2_margin"/>
 
 
