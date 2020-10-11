@@ -3,7 +3,7 @@
     <dimen name="small_margin">16dp</dimen>
     <dimen name="medium_margin">24dp</dimen>
     <dimen name="medium2_margin">50dp</dimen>
-
+    <dimen name="medium3_margin">100dp</dimen>
     <dimen name="txt_size_small">16sp</dimen>
 
     <dimen name="progress_width">250dp</dimen>

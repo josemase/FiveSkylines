@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -19,7 +18,7 @@
             android:layout_width="180dp"
             android:layout_marginStart="@dimen/small_margin"
             android:layout_height="match_parent"
-            android:src="@drawable/colegio"
+            android:src="@drawable/logoaccion"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             />
@@ -42,7 +41,7 @@
         android:layout_marginTop="@dimen/medium2_margin"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:text="Sensibilizacion"
+        android:text="Historial de\n donaciones"
         android:background="@drawable/btn_default"
         android:backgroundTint="@color/colorAccent"
         app:layout_constraintTop_toBottomOf="@+id/top_image"/>
@@ -51,7 +50,7 @@
         android:id="@+id/carrera"
         android:layout_width="@dimen/btn_width"
         android:layout_height="@dimen/btn_height_small"
-        android:text="Carrera"
+        android:text="Acceso a Imagenes"
         app:layout_constraintEnd_toEndOf="parent"
         android:background="@drawable/btn_default"
         android:backgroundTint="@color/colorOrange"
@@ -60,22 +59,5 @@
         android:layout_marginTop="@dimen/medium2_margin"/>
 
 
-    <Button
-        android:id="@+id/patrocinadores"
-        android:layout_width="@dimen/btn_width"
-        android:layout_height="@dimen/btn_height_small"
-        android:text="Patrocinadores"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:background="@drawable/btn_default"
-        android:backgroundTint="@color/colorOrange"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/carrera"
-        android:layout_marginTop="@dimen/medium2_margin"/>
 
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:src="@drawable/footer"
-android:scaleType="centerCrop"
-        app:layout_constraintBottom_toBottomOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

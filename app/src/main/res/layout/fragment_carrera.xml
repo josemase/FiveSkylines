@@ -47,8 +47,8 @@
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="@dimen/progress_width"
         android:layout_height="20dp"
-        android:layout_marginTop="@dimen/medium2_margin"
         android:layout_marginStart="@dimen/medium2_margin"
+        android:layout_marginTop="@dimen/medium2_margin"
         android:progress="0"
         android:progressTint="@color/colorOrange"
         app:layout_constraintStart_toEndOf="@+id/textView"
@@ -78,6 +78,26 @@
         app:layout_constraintStart_toEndOf="@+id/vueltas"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
+    <TextView
+        android:id="@+id/txt_altura"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/medium_margin"
+        android:layout_marginTop="@dimen/medium2_margin"
+        android:text="Altura (cm)"
+        android:textColor="@color/colorWhite"
+        android:textSize="@dimen/txt_normal"
+        app:layout_constraintStart_toEndOf="@+id/vueltasCanti"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <EditText
+        android:id="@+id/alturaCanti"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:layout_marginTop="45dp"
+        app:layout_constraintStart_toEndOf="@+id/txt_altura"
+        app:layout_constraintTop_toBottomOf="@+id/progresoVuelta" />
 
 
     <TextView
@@ -129,15 +149,34 @@
         android:backgroundTint="@color/colorOrange"/>
 
     <Button
+        android:id="@+id/btn_finalizar"
         android:layout_width="150dp"
         android:layout_height="@dimen/btn_height_small"
         android:layout_marginTop="@dimen/small_margin"
-        android:text="Finalizar"
+        android:text="Dinero Recolectado Por Patrocinador"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/btn_iniciar"
         android:background="@drawable/btn_default"
         android:backgroundTint="@color/colorOrange"/>
+
+    <TextView
+        android:id="@+id/textView12"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="0m"
+        app:layout_constraintStart_toStartOf="@+id/progresoVuelta"
+        app:layout_constraintTop_toBottomOf="@+id/progresoVuelta" />
+
+    <TextView
+        android:id="@+id/textView13"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="300m"
+        android:layout_marginEnd="@dimen/small_margin"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/progresoVuelta" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

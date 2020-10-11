@@ -12,7 +12,9 @@ import android.view.View.INVISIBLE
 import android.view.View.VISIBLE
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.activityViewModels
 import com.example.carreracontrahambre.carrera.CarreraFragment
+import com.example.carreracontrahambre.carrera.CarreraViewModel
 import com.example.carreracontrahambre.estudiante.Estudiante
 import com.example.carreracontrahambre.patrocinador.AnadirEstFragment
 import com.example.carreracontrahambre.patrocinador.Patrocinador
@@ -27,6 +29,7 @@ import kotlinx.android.synthetic.main.fragment_register.*
 class RegisterFragment : Fragment() {
     private lateinit var database: DatabaseReference
     private lateinit var auth: FirebaseAuth;
+    val viewModel: CarreraViewModel by activityViewModels()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         auth = Firebase.auth
@@ -243,6 +246,10 @@ class RegisterFragment : Fragment() {
                     // Sign in success, update UI with the signed-in user's information
                     Log.d(TAG, "createUserWithEmail:success")
                     val user = auth.currentUser
+                    val usuario = Estudiante()
+                    usuario.correo=user?.email
+                    viewModel.setEstudi(usuario)
+
                     writeNewPat(
                         editTextNamePat.text.toString(),
                         editTextEmailPat.text.toString(),
@@ -251,7 +258,7 @@ class RegisterFragment : Fragment() {
                     Toast.makeText(context, "U Signed Up successfully", Toast.LENGTH_LONG).show();
                     requireActivity().supportFragmentManager.beginTransaction()
                         .replace(R.id.fragmentContainer, AnadirEstFragment())
-                        .commit()
+
                 } else {
                     // If sign in fails, display a message to the user.
                     Log.w(TAG, "createUserWithEmail:failure", task.exception)
