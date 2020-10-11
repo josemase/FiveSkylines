@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "640802459113",
+    "firebase_url": "https://carreracontraelhambre-dd23b.firebaseio.com",
+    "project_id": "carreracontraelhambre-dd23b",
+    "storage_bucket": "carreracontraelhambre-dd23b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:640802459113:android:885712ea5555472f204f78",
+        "android_client_info": {
+          "package_name": "com.example.carreracontrahambre"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "640802459113-euufeijln16fi3f647b3mng4o4lcf7fp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBgYLyOgXtIurHaFd0-Z64iXp6vTn7_tZo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "640802459113-euufeijln16fi3f647b3mng4o4lcf7fp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
