@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".HomeFragment"
+    android:background="@color/colorPrimary">
+
+    <TextView
+        android:id="@+id/titleInscri"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="84dp"
+        android:text="Inscribir Patrocinadores"
+        android:textAlignment="center"
+        android:textSize="@dimen/txt_normal"
+        android:textColor="@color/colorWhite"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/txt_nombre_patro"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:text="Nombre del Patrocinador"
+        android:layout_marginStart="@dimen/small_margin"
+        android:layout_marginTop="@dimen/medium_margin"
+        android:textAlignment="center"
+        android:textColor="@color/colorWhite"
+        android:textSize="@dimen/txt_normal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/titleInscri" />
+
+    <TextView
+        android:id="@+id/txt_promesa"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/small_margin"
+        android:text="Promesa Por Patrocinador"
+        android:textAlignment="center"
+        android:layout_marginTop="@dimen/medium_margin"
+        android:textColor="@color/colorWhite"
+        android:textSize="@dimen/txt_normal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/titleInscri" />
+
+
+
+    <Button
+        android:id="@+id/inscribir"
+        android:layout_width="@dimen/btn_width"
+        android:layout_height="@dimen/btn_height_small"
+        android:layout_marginTop="@dimen/medium2_margin"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginBottom="@dimen/small_margin"
+        android:text="Inscribe a tus patrocinadores"
+        android:background="@drawable/btn_default"
+        android:backgroundTint="@color/colorAccent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -55,12 +55,12 @@ class RegisterEstFragment : Fragment() {
         var email: String
         var pass: String
 
-        buttonRegister.setOnClickListener() {
+        /*buttonRegister.setOnClickListener() {
             email = editTextEmail.text.toString()
             pass = editTextPassword.text.toString()
             registerEst(email, pass)
 
-        }
+        }*/
     }
 
 

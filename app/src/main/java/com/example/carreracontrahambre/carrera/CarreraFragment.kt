@@ -69,6 +69,8 @@ class CarreraFragment : Fragment(), SensorEventListener {
         btn_pausar.setOnClickListener {
             corriendo=false
         }
+
+        btn_
     }
 
     override fun onSensorChanged(event: SensorEvent?) {

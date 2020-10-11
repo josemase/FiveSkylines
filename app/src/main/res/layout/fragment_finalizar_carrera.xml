@@ -39,7 +39,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/top_image" />
     <TextView
-        android:id="@+id/promesas"
+        android:id="@+id/vueltas"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/medium2_margin"
@@ -50,5 +50,19 @@
         android:layout_marginStart="@dimen/medium2_margin"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/titulo" />
+
+    <TextView
+        android:id="@+id/promePorVuelta"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:text="Pormesa de donativo por vuelta"
+        android:textColor="@color/colorWhite"
+        android:textSize="@dimen/txt_normal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/vueltas"
+        app:layout_constraintTop_toBottomOf="@+id/titulo" />
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
