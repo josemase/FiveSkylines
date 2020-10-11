@@ -26,7 +26,6 @@ import kotlinx.android.synthetic.main.fragment_register.*
 class LoginFragment : Fragment() {
     private lateinit var database: DatabaseReference
     private lateinit var  auth: FirebaseAuth;
-    private lateinit var binding: MainActivity
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         auth = Firebase.auth
@@ -54,7 +53,7 @@ class LoginFragment : Fragment() {
                     if (task.isSuccessful) {
                         // Sign in success, update UI with the signed-in user's information
                         Log.d(TAG, "signInWithEmail:success")
-                        val user = auth.currentUser
+                        val user= auth.currentUser
                         Toast.makeText(context,"U Logged In successfully",Toast.LENGTH_LONG).show();
                         requireActivity().supportFragmentManager.beginTransaction()
                             .replace(R.id.fragmentContainer, CarreraFragment())
@@ -75,7 +74,7 @@ class LoginFragment : Fragment() {
 
         val email = editTextEmailLogIn.text.toString()
         if (TextUtils.isEmpty(email)) {
-            editTextEmail.error = "Required."
+            editTextEmailLogIn.error = "Required."
             valid = false
         } else {
             editTextEmailLogIn.error = null
@@ -83,7 +82,7 @@ class LoginFragment : Fragment() {
 
         val password = editTextPasswordLogIn.text.toString()
         if (TextUtils.isEmpty(password)) {
-            editTextPassword.error = "Required."
+            editTextPasswordLogIn.error = "Required."
             valid = false
         } else {
             editTextPasswordLogIn.error = null
