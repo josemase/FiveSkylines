@@ -11,9 +11,13 @@ import android.view.View
 import android.view.View.inflate
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.activityViewModels
+import com.example.carreracontrahambre.EstudianteInicioFragment
 import com.example.carreracontrahambre.MainActivity
 import com.example.carreracontrahambre.R
 import com.example.carreracontrahambre.carrera.CarreraFragment
+import com.example.carreracontrahambre.carrera.CarreraViewModel
+import com.example.carreracontrahambre.estudiante.Estudiante
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.DatabaseReference
@@ -27,6 +31,7 @@ class LoginFragment : Fragment() {
     private lateinit var database: DatabaseReference
     private lateinit var  auth: FirebaseAuth;
     private lateinit var binding: MainActivity
+    val viewModel: CarreraViewModel by activityViewModels()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         auth = Firebase.auth
@@ -55,9 +60,14 @@ class LoginFragment : Fragment() {
                         // Sign in success, update UI with the signed-in user's information
                         Log.d(TAG, "signInWithEmail:success")
                         val user = auth.currentUser
+                        val est= Estudiante()
+                        est.correo=user?.email
+
+                        viewModel.setEstudi(est)
                         Toast.makeText(context,"U Logged In successfully",Toast.LENGTH_LONG).show();
-                        requireActivity().supportFragmentManager.beginTransaction()
-                            .replace(R.id.fragmentContainer, CarreraFragment())
+
+                       requireActivity().supportFragmentManager.beginTransaction()
+                            .replace(R.id.fragmentContainer, EstudianteInicioFragment())
                             .commit()
                     } else {
                         // If sign in fails, display a message to the user.
