@@ -56,7 +56,7 @@ class LoginFragment : Fragment() {
                         Log.d(TAG, "signInWithEmail:success")
                         val user = auth.currentUser
                         Toast.makeText(context,"U Logged In successfully",Toast.LENGTH_LONG).show();
-                        activity!!.supportFragmentManager.beginTransaction()
+                        requireActivity().supportFragmentManager.beginTransaction()
                             .replace(R.id.fragmentContainer, CarreraFragment())
                             .commit()
                     } else {
