@@ -5,14 +5,124 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/medium2_margin"
+        android:layout_marginStart="@dimen/medium2_margin"
+        android:text="Meta"
+        android:textSize="@dimen/txt_size_small"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
 
     <ProgressBar
         android:id="@+id/progressBar"
         style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="@dimen/progress_width"
+        android:layout_height="20dp"
+        android:layout_marginTop="@dimen/medium2_margin"
+        android:layout_marginStart="@dimen/medium2_margin"
+        android:progress="50"
+        android:progressTint="@color/colorAccent"
+        app:layout_constraintStart_toEndOf="@+id/textView"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
+
+
+    <TextView
+    android:id="@+id/vueltas"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/medium2_margin"
+    android:layout_marginStart="@dimen/medium2_margin"
+    android:text="Vueltas"
+    android:textSize="@dimen/txt_size_small"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <TextView
+        android:id="@+id/vueltasCanti"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="@dimen/medium2_margin"
+        android:layout_marginStart="@dimen/medium2_margin"
+        android:text="Vueltas"
+        android:textSize="@dimen/txt_size_small"
+        app:layout_constraintStart_toEndOf="@+id/vueltas"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <TextView
+        android:id="@+id/txt_dineroRecauda"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/medium2_margin"
+        android:layout_marginTop="@dimen/medium2_margin"
+        android:text="Vueltas"
+        android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/vueltas" />
+
+    <TextView
+        android:id="@+id/txt_dineroRecaudaVal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/medium2_margin"
+        android:layout_marginTop="@dimen/medium2_margin"
+        android:text="Vueltas"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/vueltas" />
+
+    <TextView
+        android:id="@+id/dineroRecaudaVal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/medium2_margin"
+        android:layout_marginTop="@dimen/medium2_margin"
+        android:text="Vueltas"
+        android:textSize="16sp"
+        app:layout_constraintStart_toEndOf="@id/txt_dineroRecaudaVal"
+        app:layout_constraintTop_toBottomOf="@+id/vueltas" />
+
+    <Button
+        android:id="@+id/btn_iniciar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:layout_marginStart="@dimen/medium_margin"
+        android:layout_marginBottom="@dimen/big_margin_btn"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/btn_pausar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/medium2_margin"
+        android:layout_marginBottom="@dimen/big_margin_btn"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@id/btn_iniciar"  />
+
+    <Button
+        android:id="@+id/btn_fin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/medium2_margin"
+        android:layout_marginBottom="@dimen/big_margin_btn"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@id/btn_pausar"  />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
