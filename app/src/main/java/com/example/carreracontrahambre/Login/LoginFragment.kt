@@ -65,6 +65,7 @@ class LoginFragment : Fragment() {
 
                         viewModel.setEstudi(est)
                         Toast.makeText(context,"U Logged In successfully",Toast.LENGTH_LONG).show();
+
                        requireActivity().supportFragmentManager.beginTransaction()
                             .replace(R.id.fragmentContainer, EstudianteInicioFragment())
                             .commit()
