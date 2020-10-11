@@ -1,4 +1,4 @@
-package com.example.carreracontrahambre.profesor
+package com.example.carreracontrahambre
 
 import android.app.Activity
 import android.content.ContentValues.TAG
@@ -8,18 +8,21 @@ import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
+import android.view.View.INVISIBLE
+import android.view.View.VISIBLE
 import android.view.ViewGroup
 import android.widget.Toast
-import com.example.carreracontrahambre.R
 import com.example.carreracontrahambre.carrera.CarreraFragment
+import com.example.carreracontrahambre.estudiante.Estudiante
+import com.example.carreracontrahambre.profesor.Profesor
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
-import kotlinx.android.synthetic.main.fragment_register_prof.*
+import kotlinx.android.synthetic.main.fragment_register.*
 
-class RegisterProfFragment : Fragment() {
+class RegisterFragment : Fragment() {
     private lateinit var database: DatabaseReference
     private lateinit var  auth: FirebaseAuth;
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -33,7 +36,7 @@ class RegisterProfFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_register_prof, container, false)
+        return inflater.inflate(R.layout.fragment_register, container, false)
     }
     public override fun onStart() {
         super.onStart()
@@ -44,7 +47,20 @@ class RegisterProfFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         var email: String
         var pass: String
+        if(tipoUsuario.splitTrack){
+            constraintLayout2.visibility = VISIBLE
+            constraintLayout3.visibility = INVISIBLE
+        }else{
+            constraintLayout2.visibility = INVISIBLE
+            constraintLayout3.visibility = VISIBLE
+        }
 
+        btn_registroEst.setOnClickListener() {
+            email = editTextEmail.text.toString()
+            pass = editTextPassword.text.toString()
+            registerEst(email, pass)
+
+        }
         buttonRegister.setOnClickListener() {
             email = editTextEmail.text.toString()
             pass = editTextPassword.text.toString()
@@ -54,8 +70,8 @@ class RegisterProfFragment : Fragment() {
     }
 
 
-    private fun registerProf(email: String, pass: String){
-        Log.d(TAG, "registerProf:$email")
+    private fun registerEst(email: String, pass: String){
+        Log.d(TAG, "registerEst:$email")
 
         if (!validateForm()) {
             return
@@ -67,9 +83,9 @@ class RegisterProfFragment : Fragment() {
                     // Sign in success, update UI with the signed-in user's information
                     Log.d(TAG, "createUserWithEmail:success")
                     val user = auth.currentUser
-                    writeNewUser(editTextColegio.text.toString(), editTextEmail.text.toString(),editTextGradeProf.text.toString(),editTextSubject.text.toString(), editTextNameProf.text.toString())
+                    writeNewUser(editTextNameEst.text.toString(),editTextEmail.text.toString(),editTextGradeEst.text.toString(),editTextColegio.text.toString())
                     Toast.makeText(context,"U Signed Up successfully",Toast.LENGTH_LONG).show();
-                    activity!!.supportFragmentManager.beginTransaction()
+                    requireActivity().supportFragmentManager.beginTransaction()
                         .replace(R.id.fragmentContainer, CarreraFragment())
                         .commit()
                 } else {
@@ -83,6 +99,61 @@ class RegisterProfFragment : Fragment() {
             }
     }
     private fun validateForm(): Boolean {
+        var valid = true
+
+        val email = editTextEmail.text.toString()
+        if (TextUtils.isEmpty(email)) {
+            editTextEmail.error = "Required."
+            valid = false
+        } else {
+            editTextEmail.error = null
+        }
+
+        val password = editTextPassword.text.toString()
+        if (TextUtils.isEmpty(password)) {
+            editTextPassword.error = "Required."
+            valid = false
+        } else {
+            editTextPassword.error = null
+        }
+
+        return valid
+    }
+    private fun writeNewUser(name: String, email: String, grade: String, school: String) {
+        val estu = Estudiante(school, email, grade, name)
+
+        database.child("Estudiante").child("Est").setValue(estu)
+    }
+
+    private fun registerProf(email: String, pass: String){
+        Log.d(TAG, "registerProf:$email")
+
+        if (!validateFormProf()) {
+            return
+        }
+
+        auth.createUserWithEmailAndPassword(email, pass)
+            .addOnCompleteListener(activity as Activity) { task ->
+                if (task.isSuccessful) {
+                    // Sign in success, update UI with the signed-in user's information
+                    Log.d(TAG, "createUserWithEmail:success")
+                    val user = auth.currentUser
+                    writeNewUser(editTextColegio.text.toString(), editTextEmail.text.toString(),editTextGradeProf.text.toString(),editTextSubject.text.toString(), editTextNameProf.text.toString())
+                    Toast.makeText(context,"U Signed Up successfully",Toast.LENGTH_LONG).show();
+                    requireActivity().supportFragmentManager.beginTransaction()
+                        .replace(R.id.fragmentContainer, CarreraFragment())
+                        .commit()
+                } else {
+                    // If sign in fails, display a message to the user.
+                    Log.w(TAG, "createUserWithEmail:failure", task.exception)
+                    Toast.makeText( context, "Authentication failed.",
+                        Toast.LENGTH_SHORT).show()
+                }
+
+                // ...
+            }
+    }
+    private fun validateFormProf(): Boolean {
         var valid = true
 
         val email = editTextEmail.text.toString()

@@ -2,8 +2,6 @@ package com.example.carreracontrahambre
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.example.carreracontrahambre.Login.LoginFragment
-import com.example.carreracontrahambre.profesor.RegisterProfFragment
 import com.google.firebase.FirebaseApp
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
