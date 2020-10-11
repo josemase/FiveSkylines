@@ -2,6 +2,7 @@ package com.example.carreracontrahambre
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.carreracontrahambre.Login.LoginFragment
 import com.example.carreracontrahambre.profesor.RegisterProfFragment
 import com.google.firebase.FirebaseApp
 import com.google.firebase.auth.FirebaseAuth
@@ -16,7 +17,7 @@ class MainActivity : AppCompatActivity() {
         FirebaseApp.initializeApp(this);
         auth = Firebase.auth
         supportFragmentManager.beginTransaction()
-            .replace(R.id.fragmentContainer, RegisterProfFragment())
+            .replace(R.id.fragmentContainer, LoginFragment())
             .commit()
     }
 
