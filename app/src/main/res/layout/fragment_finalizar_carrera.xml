@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".HomeFragment"
+    android:background="@color/colorPrimary">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/top_image"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:backgroundTint="@color/colorWhite"
+        android:background="@drawable/top_image_default"
+        >
+
+        <ImageView
+            android:layout_width="240dp"
+            android:layout_height="120dp"
+            android:src="@drawable/carrera_logo"
+            android:scaleType="centerCrop"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/titulo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/medium2_margin"
+        android:text="Meta"
+        android:textColor="@color/colorWhite"
+        android:textSize="@dimen/txt_normal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/top_image" />
+    <TextView
+        android:id="@+id/promesas"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/medium2_margin"
+        android:text="Número de vueltas"
+        android:textAlignment="center"
+        android:textColor="@color/colorWhite"
+        android:textSize="@dimen/txt_normal"
+        android:layout_marginStart="@dimen/medium2_margin"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/titulo" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
