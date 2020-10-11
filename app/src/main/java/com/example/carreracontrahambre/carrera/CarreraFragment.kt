@@ -111,7 +111,7 @@ class CarreraFragment : Fragment(), SensorEventListener {
             }
         }
     }
-    fun calcularMetros(pasosActuales: Int): Double=pasosActuales*0.414*altura
+    fun calcularMetros(pasosActuales: Int): Double=pasosActuales*0.414*(altura/100)
 
     override fun onAccuracyChanged(sensor: Sensor?, accuracy: Int) {
 

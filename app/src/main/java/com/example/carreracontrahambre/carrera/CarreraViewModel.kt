@@ -24,14 +24,17 @@ class CarreraViewModel: ViewModel() {
        estudia.value=estudiante
     }
 
-    fun getEstudi(){
+    fun getEstudi(): LiveData<Estudiante>{
         database = Firebase.database.reference
         val referencia= database.child("Patrocinador")
        if(estudia.value != null) {
            val estudi= estudia.value ?: Estudiante()
            var correo = estudi.correo ?: ""
-           referencia.orderByChild(correo).orderByKey()
+           //referencia.orderByChild(correo).orderByKey()
+
+
        }
+        return estudia
     }
 
     val postListener = object : ValueEventListener {
