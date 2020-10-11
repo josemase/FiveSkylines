@@ -17,8 +17,12 @@ import androidx.core.content.ContextCompat.getSystemService
 import androidx.core.content.getSystemService
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
+import com.example.carreracontrahambre.FinalizarCarreraFragment
+import com.example.carreracontrahambre.Login.LoginFragment
 import com.example.carreracontrahambre.R
 import kotlinx.android.synthetic.main.fragment_carrera.*
+import kotlinx.android.synthetic.main.fragment_carrera.btn_iniciar
+import kotlinx.android.synthetic.main.fragment_home.*
 
 class CarreraFragment : Fragment(), SensorEventListener {
 
@@ -66,6 +70,19 @@ class CarreraFragment : Fragment(), SensorEventListener {
 
         btn_pausar.setOnClickListener {
             corriendo=false
+        }
+
+        btn_finalizar.setOnClickListener {
+            corriendo=false
+           btn_iniciar.visibility=View.INVISIBLE
+            btn_pausar.visibility=View.INVISIBLE
+
+            btn_iniciar.setOnClickListener {
+                requireActivity().supportFragmentManager.beginTransaction()
+                    .replace(R.id.fragmentContainer, FinalizarCarreraFragment())
+                    .addToBackStack("toDineroPatrocina")
+                    .commit()
+            }
         }
     }
 

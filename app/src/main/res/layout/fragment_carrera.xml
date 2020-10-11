@@ -129,10 +129,11 @@
         android:backgroundTint="@color/colorOrange"/>
 
     <Button
+        android:id="@+id/btn_finalizar"
         android:layout_width="150dp"
         android:layout_height="@dimen/btn_height_small"
         android:layout_marginTop="@dimen/small_margin"
-        android:text="Finalizar"
+        android:text="Dinero Recolectado Por Patrocinador"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/btn_iniciar"
