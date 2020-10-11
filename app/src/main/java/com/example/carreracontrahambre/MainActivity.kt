@@ -20,7 +20,7 @@ class MainActivity : AppCompatActivity() {
             .replace(R.id.fragmentContainer, HomeFragment())
             .commit()
 
-        
+
     }
 
 }

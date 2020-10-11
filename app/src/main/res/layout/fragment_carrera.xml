@@ -3,14 +3,27 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:context=".HomeFragment"
+    android:background="@color/colorPrimary">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintLayout"
+        android:id="@+id/top_image"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="150dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        android:backgroundTint="@color/colorWhite"
+        android:background="@drawable/top_image_default"
+        >
+
+        <ImageView
+            android:layout_width="240dp"
+            android:layout_height="120dp"
+            android:src="@drawable/carrera_logo"
+            android:scaleType="centerCrop"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -24,9 +37,10 @@
         android:layout_marginTop="@dimen/medium2_margin"
         android:layout_marginStart="@dimen/medium2_margin"
         android:text="Meta"
-        android:textSize="@dimen/txt_size_small"
+        android:textSize="@dimen/txt_normal"
+        android:textColor="@color/colorWhite"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
+        app:layout_constraintTop_toBottomOf="@+id/top_image" />
 
     <ProgressBar
         android:id="@+id/progresoVuelta"
@@ -36,9 +50,9 @@
         android:layout_marginTop="@dimen/medium2_margin"
         android:layout_marginStart="@dimen/medium2_margin"
         android:progress="0"
-        android:progressTint="@color/colorAccent"
+        android:progressTint="@color/colorOrange"
         app:layout_constraintStart_toEndOf="@+id/textView"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
+        app:layout_constraintTop_toBottomOf="@+id/top_image" />
 
 
     <TextView
@@ -48,9 +62,10 @@
     android:layout_marginTop="@dimen/medium2_margin"
     android:layout_marginStart="@dimen/medium2_margin"
     android:text="Vueltas"
-    android:textSize="@dimen/txt_size_small"
     app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toBottomOf="@+id/textView" />
+    app:layout_constraintTop_toBottomOf="@+id/textView"
+        android:textSize="@dimen/txt_normal"
+        android:textColor="@color/colorWhite"/>
 
     <TextView
         android:id="@+id/vueltasCanti"
@@ -59,7 +74,7 @@
         android:layout_marginTop="@dimen/medium2_margin"
         android:layout_marginStart="@dimen/medium2_margin"
         android:text="0"
-        android:textSize="@dimen/txt_size_small"
+        android:textSize="@dimen/txt_normal"
         app:layout_constraintStart_toEndOf="@+id/vueltas"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
@@ -72,9 +87,10 @@
         android:layout_marginStart="@dimen/medium2_margin"
         android:layout_marginTop="@dimen/medium2_margin"
         android:text="Dinero Recaudado"
-        android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/vueltas" />
+        app:layout_constraintTop_toBottomOf="@+id/vueltas"
+        android:textSize="@dimen/txt_normal"
+        android:textColor="@color/colorWhite"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -88,33 +104,40 @@
 
     <Button
         android:id="@+id/btn_iniciar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="150dp"
+        android:layout_height="@dimen/btn_height_small"
         android:text="Iniciar Carrera"
         android:layout_marginStart="@dimen/medium_margin"
         android:layout_marginBottom="@dimen/big_margin_btn"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+      android:background="@drawable/btn_default"
+        android:backgroundTint="@color/colorOrange"
+        />
 
     <Button
         android:id="@+id/btn_pausar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="150dp"
+        android:layout_height="@dimen/btn_height_small"
         android:layout_marginStart="@dimen/medium2_margin"
         android:layout_marginBottom="@dimen/big_margin_btn"
         android:text="Pausar"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@id/btn_iniciar"  />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/btn_iniciar"
+        android:background="@drawable/btn_default"
+        android:backgroundTint="@color/colorOrange"/>
 
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Finalizar"
+        android:layout_width="150dp"
+        android:layout_height="@dimen/btn_height_small"
         android:layout_marginTop="@dimen/small_margin"
-        android:layout_marginBottom="@dimen/big_margin_btn"
+        android:text="Finalizar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/btn_iniciar"
-
-        app:layout_constraintStart_toEndOf="@id/btn_iniciar"  />
+        android:background="@drawable/btn_default"
+        android:backgroundTint="@color/colorOrange"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
