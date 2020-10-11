@@ -65,4 +65,16 @@
 
 
 
+    <Button
+        android:id="@+id/inscribir"
+        android:layout_width="@dimen/btn_width"
+        android:layout_height="@dimen/btn_height_small"
+        android:layout_marginTop="@dimen/medium2_margin"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginBottom="@dimen/small_margin"
+        android:text="Donar Ahora"
+        android:background="@drawable/btn_default"
+        android:backgroundTint="@color/colorAccent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

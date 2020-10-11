@@ -1,4 +1,4 @@
-package com.example.carreracontrahambre.profesor
+package com.example.carreracontrahambre.estudiante
 
 import android.app.Activity
 import android.content.ContentValues.TAG
@@ -8,18 +8,22 @@ import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
+import android.view.View.INVISIBLE
+import android.view.View.VISIBLE
 import android.view.ViewGroup
 import android.widget.Toast
 import com.example.carreracontrahambre.R
 import com.example.carreracontrahambre.carrera.CarreraFragment
+import com.example.carreracontrahambre.estudiante.Estudiante
+import com.example.carreracontrahambre.profesor.Profesor
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
-import kotlinx.android.synthetic.main.fragment_register_prof.*
+import kotlinx.android.synthetic.main.fragment_register.*
 
-class RegisterProfFragment : Fragment() {
+class RegisterFragmentEst : Fragment() {
     private lateinit var database: DatabaseReference
     private lateinit var  auth: FirebaseAuth;
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -33,7 +37,7 @@ class RegisterProfFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_register_prof, container, false)
+        return inflater.inflate(R.layout.fragment_register, container, false)
     }
     public override fun onStart() {
         super.onStart()
@@ -44,18 +48,17 @@ class RegisterProfFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         var email: String
         var pass: String
-
-        buttonRegister.setOnClickListener() {
+        btn_registroEst.setOnClickListener() {
             email = editTextEmail.text.toString()
             pass = editTextPassword.text.toString()
-            registerProf(email, pass)
+            registerEst(email, pass)
 
         }
     }
 
 
-    private fun registerProf(email: String, pass: String){
-        Log.d(TAG, "registerProf:$email")
+    private fun registerEst(email: String, pass: String){
+        Log.d(TAG, "registerEst:$email")
 
         if (!validateForm()) {
             return
@@ -67,9 +70,9 @@ class RegisterProfFragment : Fragment() {
                     // Sign in success, update UI with the signed-in user's information
                     Log.d(TAG, "createUserWithEmail:success")
                     val user = auth.currentUser
-                    writeNewUser(editTextColegio.text.toString(), editTextEmail.text.toString(),editTextGradeProf.text.toString(),editTextSubject.text.toString(), editTextNameProf.text.toString())
+                    writeNewUser(editTextNameEst.text.toString(),editTextEmail.text.toString(),editTextGradeEst.text.toString(),editTextColegio.text.toString())
                     Toast.makeText(context,"U Signed Up successfully",Toast.LENGTH_LONG).show();
-                    activity!!.supportFragmentManager.beginTransaction()
+                    requireActivity().supportFragmentManager.beginTransaction()
                         .replace(R.id.fragmentContainer, CarreraFragment())
                         .commit()
                 } else {
@@ -103,10 +106,12 @@ class RegisterProfFragment : Fragment() {
 
         return valid
     }
-    private fun writeNewUser(school: String, email: String, grade: String, subject: String, name: String) {
-        val prof = Profesor(school, email, grade, subject, name)
+    private fun writeNewUser(name: String, email: String, grade: String, school: String) {
+        val estu = Estudiante(school, email, grade, name)
 
-        database.child("Profesor").child("Prof").setValue(prof)
+        database.child("Estudiante").child("Est").setValue(estu)
     }
+
+
 
 }
