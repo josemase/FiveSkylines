@@ -10,7 +10,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         supportFragmentManager.beginTransaction()
-            .replace(R.id.fragmentContainer, CarreraFragment())
+            .replace(R.id.fragmentContainer, HomeFragment())
             .commit()
     }
 
