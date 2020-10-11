@@ -16,6 +16,7 @@ import androidx.fragment.app.activityViewModels
 import com.example.carreracontrahambre.carrera.CarreraFragment
 import com.example.carreracontrahambre.carrera.CarreraViewModel
 import com.example.carreracontrahambre.estudiante.Estudiante
+import com.example.carreracontrahambre.patrocinador.AnadirEstFragment
 import com.example.carreracontrahambre.patrocinador.Patrocinador
 import com.example.carreracontrahambre.profesor.Profesor
 import com.google.firebase.auth.FirebaseAuth
@@ -23,7 +24,6 @@ import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
-import kotlinx.android.synthetic.main.fragment_login.*
 import kotlinx.android.synthetic.main.fragment_register.*
 
 class RegisterFragment : Fragment() {
@@ -114,7 +114,7 @@ class RegisterFragment : Fragment() {
                     )
                     Toast.makeText(context, "U Signed Up successfully", Toast.LENGTH_LONG).show();
                     requireActivity().supportFragmentManager.beginTransaction()
-                        .replace(R.id.fragmentContainer, CarreraFragment())
+                        .replace(R.id.fragmentContainer, AnadirEstFragment())
                         .commit()
                 } else {
                     // If sign in fails, display a message to the user.
@@ -257,8 +257,8 @@ class RegisterFragment : Fragment() {
                     )
                     Toast.makeText(context, "U Signed Up successfully", Toast.LENGTH_LONG).show();
                     requireActivity().supportFragmentManager.beginTransaction()
-                        .replace(R.id.fragmentContainer, EstudianteInicioFragment())
-                        .commit()
+                        .replace(R.id.fragmentContainer, AnadirEstFragment())
+
                 } else {
                     // If sign in fails, display a message to the user.
                     Log.w(TAG, "createUserWithEmail:failure", task.exception)
